@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#06aa5e">
+    <meta name="msapplication-navbutton-color" content="#06aa5e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Log in | Moorsaw</title>
+    <link rel="shortcut icon" href="assets/images/bulldoggy-500px.png" type="image/x-icon">
+    <link rel="stylesheet" href= "assets/css/styles.css">
+    <script src="./assets/js/script.js" defer></script>
+</head>
+<body>
+    <main class="card-container slideUp-animation">
+        <div class="image-container">
+            <h1 class="company">Moorsaw</h1>
+            <img src="./assets/images/bulldoggy-500px.png" class="illustration" alt="">
+            <a href="#btm" class="mobile-btm-nav">
+                <img src="./assets/images/dbl-arrow.png" alt="">
+            </a>
+        </div>
+        <form action="" method="">
+            <div class="form-container slideRight-animation">
+
+    
+                <div class="input-container">
+                    <label for="f-name"></label>
+                    <input type="text" name="f-name" id="f-name" required>
+                    <span>
+                        Username
+                    </span>
+                    <div class="error"></div>
+                </div>
+    
+                <div class="input-container">
+                    <label for="user-password"></label>
+                    <input type="password" name="user-password" id="user-password" class="user-password" required>
+                    <span>Password</span>
+                    <div class="error"></div>
+                </div>
+
+                <div id="btm">
+                        <button type = "submit" class = "submit-btn" onclick="document.location = 'dist/home.html'"> Log in </button> </p>
+                        <br> </br>
+                        <p>Don't have an account?</p>
+                        <br> </br>
+                        <button type = "submit" onclick = "document.location = 'index.html'" class = "submit-btn"> Sign up</button> </p>
+                </div>
+            </div>
+        </form> 
+    </main>
+    <section class="outro-overlay disabled slideUp-animation">
+        <h1 class="company">Moorsaw <sup>&trade;</sup></h1>
+        <h1 class="outro-greeting">Thank's for signing up..!</h1>
+        <img src="./assets/images/signedUp.svg" alt="" id="signedUp-illustration" class="slideRight-animation">
+    </section>
+</body>
+</html>

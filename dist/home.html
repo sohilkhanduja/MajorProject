@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="font/flaticon.css" />
+    <script type="module" src="../src/dom.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="shortcut icon" href="../assets/images/bulldoggy-500px.png" type="image/x-icon"/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Moorsaw</title>
+  </head>
+  <body>
+    <div id="header">
+      <div class="header-ctn">
+        <div class="lh-header-ctn">
+          <button type="button" class="btn" id="menu-btn">
+            <i class="flaticon flaticon-menu"></i>
+          </button>
+          <div id="searchbar">
+            <i class="flaticon flaticon-search-interface-symbol"></i
+            ><input type="text" name="searchbar" placeholder="Search" />
+          </div>
+        </div>
+        <button class="new-todo-btn btn act-btn">
+          <i class="flaticon flaticon-plus"></i>
+          <span class='btn-text'>New Task</span>
+        </button>
+      </div>
+    </div>
+    <div id="not-header">
+      <div id="menu" class="menu">
+        <div id="menu-ctn">
+          <ul id="nav">
+            <li id="today-menu" class="menu-links btn">
+              <i
+                class="flaticon flaticon-house icon-btn"
+                style="color: #058527"
+              ></i
+              >Today
+            </li>
+            <li id="upcoming-menu" class="menu-links btn">
+              <i
+                class="flaticon flaticon-calendar icon-btn"
+                style="color: #692fc2"
+              ></i
+              >Upcoming
+            </li>
+          </ul>
+          <div id="pj-menu">
+            <div class="title-ctn">
+              <p class="small-title">Projects</p>
+              <button id="new-pj-btn" class="icon-btn btn" type="button">
+                <i class="flaticon flaticon-plus"></i>
+              </button>
+            </div>
+            <ul id="pj-list"></ul>
+            <form id="new-pj-form" class="inactive">
+              <div>
+                <input
+                  type="text"
+                  name="pj-title"
+                  placeholder="Project Title"
+                />
+              </div>
+              <div class="btn-ctn">
+                <input
+                  type="button"
+                  value="Add"
+                  class="act-btn btn"
+                  id="add-pj-btn"
+                />
+                <input
+                  type="button"
+                  value="Cancel"
+                  class="btn cancel-btn act-btn"
+                  id="cancel-pj-btn"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <main id="content">
+        <form class="todo-editor inactive">
+          <div class="editor-area">
+            <input class="title-input" type="text" />
+            <div class="editor-extra-details">
+              <div class="lh-ctn">
+                <button class="day-btn btn" type="button">
+                  <input type="date" />
+                </button>
+                <button class="btn editor-pj-btn" type="button">
+                  <i class="flaticon flaticon-folder"></i>
+                  <select>
+                    <option value="None">None</option>
+                  </select>
+                </button>
+              </div>
+              <div class="rh-ctn">
+                <button class="btn icon-btn priority-btn" type="button">
+                  <i class="flaticon"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="editor-actions">
+            <button class="btn act-btn save-btn" type="button">Save</button>
+            <button class="btn act-btn cancel-btn" type="button">Cancel</button>
+          </div>
+        </form>
+        <form class="todo-editor new-todo-form inactive">
+          <div class="editor-area">
+            <input type="text" class="title-input" />
+            <div class="editor-extra-details">
+              <div class="lh-ctn">
+                <button class="day-btn btn" type="button">
+                  <input type="date" />
+                </button>
+                <button class="btn editor-pj-btn" type="button">
+                  <i class="flaticon flaticon-folder"></i>
+                  <select>
+                    <option value="None">None</option>
+                  </select>
+                </button>
+              </div>
+              <div class="rh-ctn">
+                <button class="btn icon-btn priority-btn" type="button">
+                  <i class="flaticon flaticon-flag"></i>
+                </button>
+                <button class="btn icon-btn comment-btn" type="button">
+                  <i class="flaticon flaticon-comment"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="editor-actions">
+            <button class="btn act-btn add-todo-btn deactive" type="button">
+              Add
+            </button>
+            <button class="btn act-btn cancel-btn" type="button">Cancel</button>
+          </div>
+        </form>
+      </main>
+    </div>
+    <div class="modal modal-full inactive">
+      <form id="new-todo-form" class="popup">
+        <header>
+          <h3 class="popup-title">Add Task</h3>
+          <button class="btn close-btn" type="button">
+            <i class="flaticon flaticon-cancel"></i>
+          </button>
+        </header>
+        <div class="todo-inputs-ctn">
+          <input type="text" name="todo-title" placeholder="Title" />
+          <div class="required-details">
+            <button type="button" class="btn" id="schedule-ctn-form">
+              <input type="date" name="todo-day" />
+            </button>
+            <button type="button" class="btn" id="pj-ctn-form">
+              <i class="flaticon flaticon-folder"></i>
+              <select name="todo-pj">
+                <option value="None">None</option>
+              </select>
+            </button>
+          </div>
+          <div class="icons-ctn">
+            <button
+              class="priority-btn icon-btn btn"
+              type="button"
+              data-id="priority-form"
+            >
+              <i class="flaticon flaticon-flag"></i>
+            </button>
+            <button
+              class="comment-btn icon-btn btn"
+              type="button"
+              data-id="comment-form"
+            >
+              <i class="flaticon flaticon-comment"></i>
+            </button>
+          </div>
+        </div>
+        <input
+          type="button"
+          value="Add"
+          class="act-btn btn deactive"
+          id="add-todo-btn"
+        />
+      </form>
+    </div>
+    <div class="modal inactive" id="popup-modal">
+      <div id="delete-popup" class="centered-popup inactive">
+        <div class="popup popup-ctn">
+          <section class="popup-body">
+            <p class="delete-popup-text">Are you sure you want to delete</p>
+          </section>
+          <div class="popup-actions">
+            <button class="btn act-btn cancel-act-btn" type="button">
+              Cancel
+            </button>
+            <button class="btn act-btn delete-act-btn" type="button">
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="comment-popup" class="popup-popup inactive">
+        <div class="popup popup-ctn">
+          <header>
+            <h4>Quick add comment</h4>
+            <button class="btn close-btn" type="button">
+              <i class="flaticon flaticon-cancel"></i>
+            </button>
+          </header>
+          <textarea
+            id="comment-input"
+            placeholder="Write a comment"
+            ;
+          ></textarea>
+        </div>
+      </div>
+      <div class="inactive popup-popup priority-popup" id="priority-popup">
+        <div class="popup popup-ctn dropdown-select">
+          <ul id="priority-popup-btns">
+            <li class="btn" data-value="1" data-selected="false">
+              <div>
+                <i
+                  class="flaticon flaticon-flag-1"
+                  style="color: rgb(209, 69, 59)"
+                ></i>
+                Priority 1
+              </div>
+              <i class="flaticon flaticon-check"></i>
+            </li>
+            <li class="btn" data-value="2" data-selected="false">
+              <div>
+                <i
+                  class="flaticon flaticon-flag-1"
+                  style="color: rgb(235, 137, 9)"
+                ></i>
+                Priority 2
+              </div>
+              <i class="flaticon flaticon-check"></i>
+            </li>
+            <li class="btn" data-value="3" data-selected="false">
+              <div>
+                <i
+                  class="flaticon flaticon-flag-1"
+                  style="color: rgb(36, 111, 224)"
+                ></i>
+                Priority 3
+              </div>
+              <i class="flaticon flaticon-check"></i>
+            </li>
+            <li class="btn active" data-value="4" data-selected="true">
+              <div><i class="flaticon flaticon-flag"></i> Priority 4</div>
+              <i class="flaticon flaticon-check"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="popup-popup inactive" id="sort-popup">
+        <div class="popup-ctn popup dropdown-select">
+          <ul id="sort-ctn">
+            <li class="sort-selection-btn btn" id="sort-date-btn">
+              Sort by due date
+            </li>
+            <li class="sort-selection-btn btn" id="sort-priority-btn">
+              Sort by priority
+            </li>
+            <li class="sort-selection-btn btn" id="sort-alphabet-btn">
+              Sort alphabetically
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="popup-popup inactive" id="pj-actions-popup">
+        <div class="popup-ctn popup dropdown-select">
+          <ul id="pj-actions-ctn"></ul>
+        </div>
+      </div>
+    </div>
+    <div class="modal modal-full comment-modal inactive">
+      <div id="add-comment">
+        <div class="item-detail-header">
+          <div class="detail-ctn">
+            <p class="project-title">project</h3>
+            <p class="todo-title">todo</h4>
+          </div>
+          <button type="button" class="btn icon-btn close-btn">
+            <i class="flaticon flaticon-cancel"></i>
+          </button>
+        </div>
+        <div class="note-date inactive" id="no-notes-note">No Comments</div>
+        <div class="comment-list"></div>
+        <form class="comment-editor">
+          <textarea
+            placeholder="Write a comment"
+            style="height: 57px"
+            id="modal-textarea"
+          ></textarea>
+          <button class="add-comment-btn btn act-btn" type="button">
+            Add Comment
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
